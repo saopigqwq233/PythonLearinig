@@ -6,7 +6,7 @@ name1 = mo1.search('My favorite hero is Batman')
 print(name1.group())
 
 # 这是管道模式，可在||间隔元素中选择匹配
-mo2 = re.compile('Batman|Superman')
+mo2 = re.compile(r'Batman|Superman')
 name2 = mo2.search('My favorite hero is Superman')
 print(name2.group())
 
@@ -114,12 +114,29 @@ name_phone2 = mo20.search('name:15600000000这是信息的格式')
 print(type(name_phone2))
 
 # 接收所有的  .字符，通配字符
-mo21 = re.compile('.at')
+mo21 = re.compile(r'.at')
 words = mo21.findall('The cat in the hat sat on the flat mat')
 print(words)
 # 接收所有字符  .*
-mo22 = re.compile('names:(.*) phone number:(.*)')
-users_info = mo22.findall('names:Mike phone number:15600000000'
-                          'names:Jack phone number:18100000000'
-                          'names:John phone number:16200000000')
+# 贪心模式匹配,.*将匹配最多的字符
+mo22 = re.compile(r'names:(.*) phone number:(.*)')
+users_info = mo22.findall('names:Mike phone number:15600000000 '
+                          'names:Jack phone number:18100000000 '
+                          'names:John phone number:16200000000 ')
 print(users_info)
+# 非贪心模式匹配,.*? 将匹配最少的字符
+mo23 = re.compile(r'names:(.*?) phone number:(.*?) ')
+users_info = mo23.findall('names:Mike phone number:15600000000 '
+                          'names:Jack phone number:18100000000 '
+                          'names:John phone number:16200000000 ')
+print(users_info)
+
+# 句点匹配换行符
+mo24 = re.compile('.*')
+sentences = mo24.search('I can see empty streets.\nBut I can\'t sleep empty sheets\n')
+print(sentences.group())
+
+mo25 = re.compile('.*', re.DOTALL)
+sentences = mo25.search('I can see empty streets.\nBut I can\'t sleep empty sheets\n')
+print(repr(sentences.group()))
+print(sentences.group())
