@@ -26,14 +26,8 @@ print(name4.group())  # 只输出第一个出现的Superman
 mo5 = re.compile(r'\d\d\d\d\d\d\d\d\d\d\d')
 phone_number1 = mo5.search('我的电话号码是15600000000')
 print(phone_number1.group())
-# 分组模式
-mo5 = re.compile(r'(\+86)(\d\d\d)(\d\d\d\d)(\d\d\d\d)')
-phone_number1 = mo5.search('我的电话号码是+8618900000000')
-print('电话号码'+phone_number1.group())
-print('前缀'+phone_number1.group(1))
 
 # 可有可无模式
-import re
 mo6 = re.compile(r'(\+86)?(\d\d\d)(\d\d\d\d)(\d\d\d\d)')
 phone_number2 = mo6.search('他输入了+8615600000000到电话框')
 phone_number3 = mo6.search('另一个人输入18900000000')
@@ -41,13 +35,11 @@ print(phone_number2.group())
 print(phone_number3.group())
 
 # 就是要有特殊字符，比如(),\+
-import re
 mo7 = re.compile(r'(\(\+\d\d\))(\d\d\d)(\d\d\d\d)(\d\d\d\d)')
 phone_number4 = mo7.search('我的电话号码是(+86)15600000000')
 print(phone_number4.group())
 
 # 匹配任意数量的字符
-import re
 mo8 = re.compile(r'\d*%')
 money = mo8.search('本期涨幅有143%')
 print(money.group())
@@ -55,14 +47,9 @@ money = mo8.search('本期涨幅为?%')
 print(money.group())
 
 # 匹配任意数量存在的字符
-import re
 mo9 = re.compile(r'\d+')
 numbers = mo9.search('第一产业增加值54779亿元')
 print(numbers.group())
-# 未出现会怎么样
-mo9 = re.compile(r'\d+亿元')
-numbers = mo9.search('第一产业增加值????亿元')
-print(type(numbers))
 
 # 匹配指定次数
 mo10 = re.compile(r'(\+\d\d)?(\d){11}')
