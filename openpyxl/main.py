@@ -14,3 +14,8 @@ for rowofcellobj in Sheet1_example_xlsx['A1':'C7']:
     for cellobj in rowofcellobj:
         print(cellobj.coordinate, cellobj.value)
     print('---EOF---OF---ROW---')
+
+for columnsofsheet1 in list(Sheet1_example_xlsx.columns):
+    for cellobj in columnsofsheet1:
+        print(cellobj.coordinate, cellobj.value)
+    print('---EOF---OF---COLUMN---')
