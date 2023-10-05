@@ -11,7 +11,7 @@ data = {
 # post请求的参数必须编码
 data = urllib.parse.urlencode(data).encode('utf-8')
 
-request = urllib.request.Request(url=url,data=data, headers=headers)
+request = urllib.request.Request(url=url, data=data, headers=headers)
 
 res = urllib.request.urlopen(request)
 
