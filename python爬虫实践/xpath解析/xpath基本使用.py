@@ -29,6 +29,5 @@ tree = etree.parse('XX.html')
 li_list = tree.xpath('//ul/li[@id="l1" or @id="l7"]/text()')
 
 
-
 print(li_list)
 print(len(li_list))
